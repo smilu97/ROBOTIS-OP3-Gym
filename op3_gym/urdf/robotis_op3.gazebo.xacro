@@ -12,7 +12,7 @@
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>false</selfCollide>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <!-- left leg links -->
@@ -20,35 +20,35 @@
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>false</selfCollide>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo reference="l_hip_roll_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>false</selfCollide>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo reference="l_hip_pitch_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>false</selfCollide>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo reference="l_knee_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>false</selfCollide>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo reference="l_ank_pitch_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>false</selfCollide>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo reference="l_ank_roll_link">
@@ -67,35 +67,35 @@
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>false</selfCollide>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo reference="r_hip_roll_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>false</selfCollide>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo reference="r_hip_pitch_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>false</selfCollide>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo reference="r_knee_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>false</selfCollide>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo reference="r_ank_pitch_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>false</selfCollide>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo reference="r_ank_roll_link">
@@ -114,56 +114,56 @@
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>false</selfCollide>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo reference="r_sho_roll_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>false</selfCollide>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo reference="r_el_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>false</selfCollide>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo reference="l_sho_pitch_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>false</selfCollide>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo reference="l_sho_roll_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>false</selfCollide>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo reference="l_el_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>false</selfCollide>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo reference="head_pan_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>false</selfCollide>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo reference="head_tilt_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>false</selfCollide>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
 <!--
@@ -316,7 +316,7 @@
       <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
         <topicName>robotis_op3/imu</topicName>
         <bodyName>body_link</bodyName>
-        <updateRateHZ>60.0</updateRateHZ>
+        <updateRateHZ>0</updateRateHZ>
         <gaussianNoise>0.0</gaussianNoise>
         <xyzOffset>0 0 0</xyzOffset>
         <rpyOffset>0 0 0</rpyOffset>
