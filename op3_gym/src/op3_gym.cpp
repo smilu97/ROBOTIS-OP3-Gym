@@ -23,18 +23,9 @@
 
 /* ROBOTIS Controller Header */
 #include "robotis_controller/robotis_controller.h"
-#include "robotis_controller_msgs/SetModule.h"
-
-/* Sensor Module Header */
-#include "open_cr_module/open_cr_module.h"
-
-/* Motion Module Header */
-#include "op3_base_module/base_module.h"
-#include "op3_direct_control_module/direct_control_module.h"
 
 using namespace robotis_framework;
 using namespace dynamixel;
-using namespace robotis_op;
 
 const int BAUD_RATE = 2000000;
 const double PROTOCOL_VERSION = 2.0;
@@ -46,56 +37,30 @@ const int POWER_CTRL_TABLE = 24;
 const int RGB_LED_CTRL_TABLE = 26;
 const int TORQUE_ON_CTRL_TABLE = 64;
 
-std::string g_offset_file;
 std::string g_robot_file;
 std::string g_init_file;
 std::string g_device_name;
 
-bool resetMotion(std_srvs::Empty::Request& request, std_srvs::Empty::Response& response) {
-  RobotisController *controller = RobotisController::getInstance();
-  DirectControlModule *mod = DirectControlModule::getInstance();
-  controller->removeMotionModule(mod);
-  DirectControlModule::destroyInstance();
-  mod = DirectControlModule::getInstance();
-  controller->addMotionModule(mod);
-  ROS_INFO("reset motion");
-  return true;
-}
-
 int main(int argc, char **argv)
 {
-  ros::init(argc, argv, "op3_manager");
+  ros::init(argc, argv, "op3_gym");
   ros::NodeHandle nh;
 
-  ROS_INFO("manager->init");
+  ROS_INFO("gym->init");
   RobotisController *controller = RobotisController::getInstance();
 
   /* Load ROS Parameter */
 
-  nh.param<std::string>("offset_file_path", g_offset_file, "");
   nh.param<std::string>("robot_file_path", g_robot_file, "");
   nh.param<std::string>("init_file_path", g_init_file, "");
   nh.param<std::string>("device_name", g_device_name, SUB_CONTROLLER_DEVICE);
 
-  // ros::AdvertiseServiceOptions reset_motion_aso =
-  //   ros::AdvertiseServiceOptions::create<std_srvs::Empty>(
-  //     "/robotis/gym/reset_motion",
-  //     resetMotion,
-  //     ros::VoidPtr(), &gazebo_queue_);
-
-  // ros::ServiceServer reset_motion_srv = nh.advertiseService(reset_motion_aso);
-
-  ros::ServiceServer reset_motion_srv = nh.advertiseService("/robotis/gym/reset_motion", resetMotion);
-
   controller->gazebo_mode_ = true;
-
-  {
-    ROS_WARN("SET TO GAZEBO MODE!");
-    std::string robot_name;
-    nh.param<std::string>("gazebo_robot_name", robot_name, "");
-    if (robot_name != "")
-      controller->gazebo_robot_name_ = robot_name;
-  }
+  
+  std::string robot_name;
+  nh.param<std::string>("gazebo_robot_name", robot_name, "");
+  if (robot_name != "")
+    controller->gazebo_robot_name_ = robot_name;
 
   if (g_robot_file == "")
   {
@@ -110,17 +75,7 @@ int main(int argc, char **argv)
     return -1;
   }
 
-  // load offset
-  if (g_offset_file != "")
-    controller->loadOffset(g_offset_file);
-
   usleep(300 * 1000);
-
-  /* Add Sensor Module */
-  controller->addSensorModule((SensorModule*) OpenCRModule::getInstance());
-
-  /* Add Motion Module */
-  // controller->addMotionModule((MotionModule*) DirectControlModule::getInstance());
 
   // start timer
   controller->startTimer();
