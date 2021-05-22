@@ -16,16 +16,27 @@
 
 /* Author: Kayman */
 
+/* gazebo */
+#include <gazebo/gazebo.hh>
+#include <gazebo/gazebo_client.hh>
+#include <gazebo/common/Plugin.hh>
+#include <gazebo/msgs/msgs.hh>
+#include <gazebo/transport/transport.hh>
+
+#include <functional>
+#include "op3_gym/Step.h"
+
 /* ROS API Header */
 #include <ros/ros.h>
 #include <std_msgs/String.h>
-#include <std_srvs/Empty.h>
 
 /* ROBOTIS Controller Header */
 #include "robotis_controller/robotis_controller.h"
+#include "open_cr_module/open_cr_module.h"
 
 using namespace robotis_framework;
 using namespace dynamixel;
+using namespace robotis_op;
 
 const int BAUD_RATE = 2000000;
 const double PROTOCOL_VERSION = 2.0;
@@ -41,10 +52,38 @@ std::string g_robot_file;
 std::string g_init_file;
 std::string g_device_name;
 
+bool iterateCallback(op3_gym::Step::Request& req, op3_gym::Step::Response& res, const gazebo::transport::PublisherPtr& pub)
+{
+  // Create Iterate msg
+  gazebo::msgs::WorldControl stepper;
+  // Set multi-step to requested iterations
+  stepper.set_multi_step(req.iterations);
+  pub->Publish(stepper);
+
+  res.result = true;
+
+  return true;
+}
+
 int main(int argc, char **argv)
 {
+  gazebo::client::setup(argc,argv);
+  gazebo::transport::NodePtr node(new gazebo::transport::Node());
+  node->Init();
+
   ros::init(argc, argv, "op3_gym");
   ros::NodeHandle nh;
+
+  gazebo::transport::PublisherPtr pub = node->Advertise<gazebo::msgs::WorldControl>("~/world_control");
+  //Publish to topic ~/world_control
+  pub->WaitForConnection();
+
+  ros::ServiceServer iter_server = nh.advertiseService<op3_gym::Step::Request, op3_gym::Step::Response>(
+    "/iterate",
+    std::bind(&iterateCallback,
+    std::placeholders::_1,
+    std::placeholders::_2,
+    pub));
 
   ROS_INFO("gym->init");
   RobotisController *controller = RobotisController::getInstance();
@@ -76,6 +115,8 @@ int main(int argc, char **argv)
   }
 
   usleep(300 * 1000);
+
+  controller->addSensorModule((SensorModule*) OpenCRModule::getInstance());
 
   // start timer
   controller->startTimer();
