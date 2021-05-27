@@ -12,7 +12,7 @@
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>true</selfCollide>
+    <selfCollide>false</selfCollide>
   </gazebo>
 
   <!-- left leg links -->
@@ -20,35 +20,35 @@
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>true</selfCollide>
+    <selfCollide>false</selfCollide>
   </gazebo>
 
   <gazebo reference="l_hip_roll_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>true</selfCollide>
+    <selfCollide>false</selfCollide>
   </gazebo>
 
   <gazebo reference="l_hip_pitch_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>true</selfCollide>
+    <selfCollide>false</selfCollide>
   </gazebo>
 
   <gazebo reference="l_knee_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>true</selfCollide>
+    <selfCollide>false</selfCollide>
   </gazebo>
 
   <gazebo reference="l_ank_pitch_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>true</selfCollide>
+    <selfCollide>false</selfCollide>
   </gazebo>
 
   <gazebo reference="l_ank_roll_link">
@@ -67,35 +67,35 @@
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>true</selfCollide>
+    <selfCollide>false</selfCollide>
   </gazebo>
 
   <gazebo reference="r_hip_roll_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>true</selfCollide>
+    <selfCollide>false</selfCollide>
   </gazebo>
 
   <gazebo reference="r_hip_pitch_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>true</selfCollide>
+    <selfCollide>false</selfCollide>
   </gazebo>
 
   <gazebo reference="r_knee_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>true</selfCollide>
+    <selfCollide>false</selfCollide>
   </gazebo>
 
   <gazebo reference="r_ank_pitch_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>true</selfCollide>
+    <selfCollide>false</selfCollide>
   </gazebo>
 
   <gazebo reference="r_ank_roll_link">
@@ -114,56 +114,56 @@
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>true</selfCollide>
+    <selfCollide>false</selfCollide>
   </gazebo>
 
   <gazebo reference="r_sho_roll_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>true</selfCollide>
+    <selfCollide>false</selfCollide>
   </gazebo>
 
   <gazebo reference="r_el_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>true</selfCollide>
+    <selfCollide>false</selfCollide>
   </gazebo>
 
   <gazebo reference="l_sho_pitch_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>true</selfCollide>
+    <selfCollide>false</selfCollide>
   </gazebo>
 
   <gazebo reference="l_sho_roll_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>true</selfCollide>
+    <selfCollide>false</selfCollide>
   </gazebo>
 
   <gazebo reference="l_el_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>true</selfCollide>
+    <selfCollide>false</selfCollide>
   </gazebo>
 
   <gazebo reference="head_pan_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>true</selfCollide>
+    <selfCollide>false</selfCollide>
   </gazebo>
 
   <gazebo reference="head_tilt_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/White</material>
-    <selfCollide>true</selfCollide>
+    <selfCollide>false</selfCollide>
   </gazebo>
 
 <!--
@@ -270,7 +270,7 @@
 
   <!-- head camera -->
 
-  <gazebo reference="cam_gazebo_link">
+  <!-- <gazebo reference="cam_gazebo_link">
     <sensor name='camera' type='camera'>
       <pose>-0.050000 -0.010000 0.000000 -1.5708 0.000000 -3.141592</pose>
       <camera name='__default__'>
@@ -302,7 +302,7 @@
         <distortionT2>0.0</distortionT2>
       </plugin>
     </sensor>
-  </gazebo>
+  </gazebo> -->
 
 
   <!-- imu sensor -->

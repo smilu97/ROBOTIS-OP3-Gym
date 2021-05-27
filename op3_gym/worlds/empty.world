@@ -16,7 +16,7 @@
       <direction>-0.5 0.1 -0.9</direction>
     </light>
 
-    <physics type='ode'>
+    <physics type="bullet">
       <max_step_size>0.001</max_step_size>
       <real_time_factor>1</real_time_factor>
       <real_time_update_rate>0.0</real_time_update_rate>
