@@ -22,8 +22,10 @@
 #include <gazebo/common/Plugin.hh>
 #include <gazebo/msgs/msgs.hh>
 #include <gazebo/transport/transport.hh>
+#include "gazebo_msgs/ContactState.h"
 
 #include <functional>
+#include <string>
 #include "op3_gym/Step.h"
 
 /* ROS API Header */
@@ -65,11 +67,22 @@ bool iterateCallback(op3_gym::Step::Request& req, op3_gym::Step::Response& res, 
   return true;
 }
 
+void contactCallback(ConstContactsPtr &_msg) {
+  const std::string plane "ground_plane"
+  for (int i = 0; i < _msg->contact_size(); i++) {
+    std::string coll1 = _msg->contact(i).collision1();
+    std::string coll2 = _msg->contact(i).collision2();
+    
+  }
+}
+
 int main(int argc, char **argv)
 {
   gazebo::client::setup(argc,argv);
   gazebo::transport::NodePtr node(new gazebo::transport::Node());
   node->Init();
+
+  gazebo::transport::SubscriberPtr sub = node->Subscribe("~/physics/contacts", contactCallback);
 
   ros::init(argc, argv, "op3_gym");
   ros::NodeHandle nh;
@@ -84,6 +97,8 @@ int main(int argc, char **argv)
     std::placeholders::_1,
     std::placeholders::_2,
     pub));
+  
+
 
   ROS_INFO("gym->init");
   RobotisController *controller = RobotisController::getInstance();
@@ -116,7 +131,7 @@ int main(int argc, char **argv)
 
   usleep(300 * 1000);
 
-  controller->addSensorModule((SensorModule*) OpenCRModule::getInstance());
+  // controller->addSensorModule((SensorModule*) OpenCRModule::getInstance());
 
   // start timer
   controller->startTimer();
