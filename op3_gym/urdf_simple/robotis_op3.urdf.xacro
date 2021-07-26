@@ -45,9 +45,9 @@
     <visual>
       <xacro:insert_mesh_body_link />
     </visual>
-    <collision>
+    <!-- <collision>
       <xacro:insert_mesh_body_link />
-    </collision>
+    </collision> -->
     <inertial>
       <xacro:insert_inertia_body_link />
     </inertial>
