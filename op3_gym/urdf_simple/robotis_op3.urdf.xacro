@@ -45,9 +45,13 @@
     <visual>
       <xacro:insert_mesh_body_link />
     </visual>
-    <!-- <collision>
-      <xacro:insert_mesh_body_link />
-    </collision> -->
+    <collision>
+      <!-- <xacro:insert_mesh_body_link /> -->
+      <origin xyz="0 0 0.07" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
     <inertial>
       <xacro:insert_inertia_body_link />
     </inertial>
